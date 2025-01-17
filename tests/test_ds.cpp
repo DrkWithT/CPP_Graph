@@ -16,6 +16,12 @@
 int main() {
     using namespace CPPGraph;
 
+    /**
+     * @brief Represents a BT graph.
+     *    10
+     *   /  \
+     *  5    15
+     */
     Model::Graph<int> tree;
 
     tree.add(10);
@@ -23,12 +29,31 @@ int main() {
     tree.add(15);
     tree.connect(10, 5, Meta::Cyclicity::no);
     tree.connect(10, 15, Meta::Cyclicity::no);
-    std::cout << "foo 1" << '\n';
 
     auto print_fn = [](int arg) {
         std::cout << arg << '\n';
     };
 
+    /**
+     * @brief Represents a K4 graph AKA a 4-node diamond.
+     *     1
+     *   / | \
+     *  2  -  3
+     *   \ | /
+     *     4
+     */
+    Model::Graph<int> k4_diamond;
+
+    k4_diamond.add(1);
+    k4_diamond.add(2);
+    k4_diamond.add(3);
+    k4_diamond.add(4);
+    k4_diamond.connect(1, 2, Meta::Cyclicity::yes);
+    k4_diamond.connect(1, 3, Meta::Cyclicity::yes);
+    k4_diamond.connect(2, 3, Meta::Cyclicity::yes);
+    k4_diamond.connect(2, 4, Meta::Cyclicity::yes);
+    k4_diamond.connect(3, 4, Meta::Cyclicity::yes);
+
     Algorithms::breadthTraversal(tree, print_fn);
-    std::cout << "foo 2" << '\n';
+    Algorithms::depthTraversal(k4_diamond, print_fn);
 }
