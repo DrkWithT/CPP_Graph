@@ -1,11 +1,15 @@
+# utility.sh
+# By: DrkWithT
+# Project: CPP_Graph
+
 if [[ $# -lt 2 ]]; then
-    echo "Usage: ./utility.sh [build | test]";
+    echo "Usage: ./utility.sh [build | test <preset>]";
     exit 1
 fi
 
 option="$1"
 
-if [[ "$option" = "build" && $# -eq 3 ]]; then
+if [[ "$option" = "build" && $# -ne 3 ]]; then
     cmake -S . -B build --preset $2 && cmake --build build;
     cp ./build/compile_commands.json .
 elif [[ "$option" = "test" ]]; then
