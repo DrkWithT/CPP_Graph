@@ -2,8 +2,8 @@
 # By: DrkWithT
 # Project: CPP_Graph
 
-if [[ $# -lt 2 ]]; then
-    echo "Usage: ./utility.sh [build | test <preset>]";
+if [[ $# -lt 1 ]]; then
+    echo "Usage: ./utility.sh [build <preset> | test]";
     exit 1
 fi
 
@@ -15,6 +15,6 @@ if [[ "$option" = "build" && $# -ne 3 ]]; then
 elif [[ "$option" = "test" ]]; then
     ctest --test-dir build -V --timeout 2
 else
-    echo "Usage: ./utility.sh [build | test <preset>]";
+    echo "Usage: ./utility.sh [build <preset> | test]";
     exit 1
 fi
