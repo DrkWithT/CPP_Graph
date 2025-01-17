@@ -18,7 +18,7 @@
         },
         {
             "name": "linux-debug-build",
-            "generator": "Make",
+            "generator": "Unix Makefiles",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_CXX_STANDARD": "20",
