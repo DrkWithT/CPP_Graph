@@ -1,0 +1,22 @@
+name: CPPG CI Tasks
+
+on:
+    push:
+        branches:
+            - main
+            - dev
+
+jobs:
+    Pre-Workflow:
+        name: CPPG Pre Workflow
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup environment
+              env:
+                CXX: "g++"
+              run: "chmod +x ./utility.sh"
+            - name: Build Tests
+              run: "./utility.sh build linux-debug-build"
+            - name: Run Tests
+              run: "./utility.sh test"
